@@ -9,8 +9,10 @@ public class Product {
 	private String productDescription;
 	private String shortName;
 	private int unitCost;
-	private int packSize;
+	private String packSize;
 	private int reorderQuantity;
+	private int reorderThreshold;
+	private int quantityOnHand;
 	private int retailPrice;
 	private int productWeight;
 	private Blob productImage;
@@ -20,7 +22,8 @@ public class Product {
 	}
 
 	public Product(int productUpc, String productName, String productDescription, String shortName, int unitCost,
-			int packSize, int reorderQuantity, int retailPrice, int productWeight, Blob productImage) {
+			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, int retailPrice,
+			int productWeight, Blob productImage) {
 		super();
 		this.productUpc = productUpc;
 		this.productName = productName;
@@ -29,6 +32,8 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
+		this.reorderThreshold = reorderThreshold;
+		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
 		this.productImage = productImage;
@@ -74,11 +79,11 @@ public class Product {
 		this.unitCost = unitCost;
 	}
 
-	public int getPackSize() {
+	public String getPackSize() {
 		return packSize;
 	}
 
-	public void setPackSize(int packSize) {
+	public void setPackSize(String packSize) {
 		this.packSize = packSize;
 	}
 
@@ -88,6 +93,22 @@ public class Product {
 
 	public void setReorderQuantity(int reorderQuantity) {
 		this.reorderQuantity = reorderQuantity;
+	}
+
+	public int getReorderThreshold() {
+		return reorderThreshold;
+	}
+
+	public void setReorderThreshold(int reorderThreshold) {
+		this.reorderThreshold = reorderThreshold;
+	}
+
+	public int getQuantityOnHand() {
+		return quantityOnHand;
+	}
+
+	public void setQuantityOnHand(int quantityOnHand) {
+		this.quantityOnHand = quantityOnHand;
 	}
 
 	public int getRetailPrice() {
