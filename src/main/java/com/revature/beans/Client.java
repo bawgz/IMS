@@ -1,26 +1,48 @@
 package com.revature.beans;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ims_client")
 public class Client {
 
+	@Id
+	@Column(name="ims_client_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int imsClientId;
+	@Column(name="client_name")
 	private String clientName;
-	private String clinetEmail;
+	@Column(name="client_email")
+	private String clientEmail;
+	@Column(name="point_of_contact_name")
 	private String pointOfContactName;
+	@Column(name="client_phone")
 	private String clientPhone;
+	@Column(name="client_fax")
 	private String clientFax;
-	private int addressId;
-	private int clientTypeId;
+	@OneToOne()
+	@JoinColumn(name="address_id")
+	private Address address;
+	@ManyToOne()
+	@JoinColumn(name="client_type_id")
+	private ClientType clientType;
+	@OneToMany(mappedBy="client")
+	private Set<PurchaseOrder> purchaseOrders;
 	public Client(int imsClientId, String clientName, String clinetEmail, String pointOfContactName, String clientPhone,
-			String clientFax, int addressId, int clientTypeId) {
+			String clientFax, Address address, ClientType clientType) {
 		super();
 		this.imsClientId = imsClientId;
 		this.clientName = clientName;
-		this.clinetEmail = clinetEmail;
+		this.clientEmail = clinetEmail;
 		this.pointOfContactName = pointOfContactName;
 		this.clientPhone = clientPhone;
 		this.clientFax = clientFax;
-		this.addressId = addressId;
-		this.clientTypeId = clientTypeId;
+		this.address = address;
+		this.clientType = clientType;
+		purchaseOrders = new HashSet<PurchaseOrder>();
 	}
 	public Client() {
 		super();
@@ -39,10 +61,10 @@ public class Client {
 		this.clientName = clientName;
 	}
 	public String getClinetEmail() {
-		return clinetEmail;
+		return clientEmail;
 	}
 	public void setClinetEmail(String clinetEmail) {
-		this.clinetEmail = clinetEmail;
+		this.clientEmail = clinetEmail;
 	}
 	public String getPointOfContactName() {
 		return pointOfContactName;
@@ -62,16 +84,16 @@ public class Client {
 	public void setClientFax(String clientFax) {
 		this.clientFax = clientFax;
 	}
-	public int getAddressId() {
-		return addressId;
+	public Address getAddress() {
+		return address;
 	}
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddressId(Address address) {
+		this.address = address;
 	}
-	public int getClientTypeId() {
-		return clientTypeId;
+	public ClientType getClientTypeId() {
+		return clientType;
 	}
-	public void setClientTypeId(int clientTypeId) {
-		this.clientTypeId = clientTypeId;
+	public void setClientTypeId(ClientType clientType) {
+		this.clientType = clientType;
 	}
 }

@@ -1,9 +1,23 @@
 package com.revature.beans;
 
+import java.util.Set;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="ims_product_category")
 public class ProductCategory {
 
+	@Id
+	@Column(name="category_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int categoryId;
+	@Column(name="category_description")
 	private String categoryDescription;
+	@OneToMany(mappedBy="productCategory")
+	Set<ProductCategories> productCategories;
+	
+	
 	public ProductCategory(int categoryId, String categoryDescription) {
 		super();
 		this.categoryId = categoryId;

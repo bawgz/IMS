@@ -1,23 +1,42 @@
 package com.revature.beans;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="purchase_order")
 public class PurchaseOrder {
 
+	@Id
+	@Column(name="order_number")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int orderNumber;
+	@Column(name="subtotal")
 	private int subtotal;
+	@Column(name="purchase_date")
 	private Date purchaseDate;
+	@Column(name="tax_amount")
 	private int taxAmount;
+	@Column(name="po_total")
 	private int poTotal;
-	private int clientId;
-	public PurchaseOrder(int orderNumber, int subtotal, Date purchaseDate, int taxAmount, int poTotal, int clientId) {
+	@ManyToOne()
+	@JoinColumn(name="client_id")
+	private Client client;
+	//TODO create composite key for IMS_PO_LINE
+	@OneToMany(mappedBy="")
+	private Set<PoLine> poLines;
+	public PurchaseOrder(int orderNumber, int subtotal, Date purchaseDate, int taxAmount, int poTotal, Client client) {
 		super();
 		this.orderNumber = orderNumber;
 		this.subtotal = subtotal;
 		this.purchaseDate = purchaseDate;
 		this.taxAmount = taxAmount;
 		this.poTotal = poTotal;
-		this.clientId = clientId;
+		this.client = client;
+		poLines = new HashSet<PoLine>();
 	}
 	public PurchaseOrder() {
 		super();
@@ -53,12 +72,16 @@ public class PurchaseOrder {
 	public void setPoTotal(int poTotal) {
 		this.poTotal = poTotal;
 	}
-	public int getClientId() {
-		return clientId;
+	public Client getClient() {
+		return client;
 	}
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
+	public void setClient(Client client) {
+		this.client = client;
 	}
-	
-	
+	public Set<PoLine> getPoLines() {
+		return poLines;
+	}
+	public void setPoLines(Set<PoLine> poLines) {
+		this.poLines = poLines;
+	}
 }
