@@ -27,7 +27,6 @@ public class PurchaseOrder {
 	@ManyToOne()
 	@JoinColumn(name="client_id")
 	private Client client;
-	//TODO create composite key for IMS_PO_LINE
 	@OneToMany(mappedBy="purchaseOrder")
 	private Set<PoLine> poLines;
 	

@@ -17,7 +17,7 @@ public class ProductCategory {
 	
 	//mappings
 	@OneToMany(mappedBy="productCategory")
-	Set<ProductCategories> productCategories;
+	Set<ProductCategoriesId> productCategories;
 	
 	
 	public ProductCategory(int categoryId, String categoryDescription) {

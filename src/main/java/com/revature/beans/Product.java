@@ -36,8 +36,9 @@ public class Product {
 	@Column(name="product_image")
 	private Blob productImage;
 	
+	//mappings
 	@OneToMany(mappedBy="product")
-	Set<ProductCategory> productCategories;
+	Set<ProductCategoriesId> productCategories;
 	
 	public Product() {
 		super();
