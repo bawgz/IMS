@@ -14,8 +14,8 @@ public class ProductCategory {
 	private int categoryId;
 	@Column(name="category_description")
 	private String categoryDescription;
-	@OneToMany(mappedBy="productCategory")
-	Set<ProductCategories> productCategories;
+	@ManyToMany(mappedBy="")
+	Set<Product> productCategories;
 	
 	
 	public ProductCategory(int categoryId, String categoryDescription) {
