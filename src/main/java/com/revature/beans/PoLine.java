@@ -1,40 +1,48 @@
 package com.revature.beans;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ims_po_line")
 public class PoLine {
 
-	private int orderNumber;
-	private int lineNumber;
+	@EmbeddedId
+	private PoLineId poLineId;
+	
+	@Column(name="unit_price", nullable = false)
 	private int unitPrice;
+	@Column(name="quantity_ordered", nullable = false)
 	private int quantityOrdered;
+	@Column(name="product_upc", nullable = false)
 	private int productUpc;
+	
+	//mappings
+	@ManyToOne()
+	private PurchaseOrder purchaseOrder;
+	@ManyToOne()
+	private Product product;
 	
 	public PoLine() {
 		super();
 	}
 
-	public PoLine(int orderNumber, int lineNumber, int unitPrice, int quantityOrdered, int productUpc) {
+	public PoLine(PoLineId poLineId, int unitPrice, int quantityOrdered, int productUpc, PurchaseOrder purchaseOrder,
+			Product product) {
 		super();
-		this.orderNumber = orderNumber;
-		this.lineNumber = lineNumber;
+		this.poLineId = poLineId;
 		this.unitPrice = unitPrice;
 		this.quantityOrdered = quantityOrdered;
 		this.productUpc = productUpc;
+		this.purchaseOrder = purchaseOrder;
+		this.product = product;
 	}
 
-	public int getOrderNumber() {
-		return orderNumber;
+	public PoLineId getPoLineId() {
+		return poLineId;
 	}
 
-	public void setOrderNumber(int orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-
-	public int getLineNumber() {
-		return lineNumber;
-	}
-
-	public void setLineNumber(int lineNumber) {
-		this.lineNumber = lineNumber;
+	public void setPoLineId(PoLineId poLineId) {
+		this.poLineId = poLineId;
 	}
 
 	public int getUnitPrice() {
@@ -59,6 +67,22 @@ public class PoLine {
 
 	public void setProductUpc(int productUpc) {
 		this.productUpc = productUpc;
+	}
+
+	public PurchaseOrder getPurchaseOrder() {
+		return purchaseOrder;
+	}
+
+	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+		this.purchaseOrder = purchaseOrder;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 	
 }

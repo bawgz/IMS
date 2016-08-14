@@ -1,21 +1,43 @@
 package com.revature.beans;
 
 import java.sql.Blob;
+import java.util.Set;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ims_product")
 public class Product {
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="product_upc", nullable = false)
 	private int productUpc;
+	@Column(name="product_name", nullable = false)
 	private String productName;
+	@Column(name="product_description", nullable = false)
 	private String productDescription;
+	@Column(name="short_name", nullable = false)
 	private String shortName;
+	@Column(name="unit_cost", nullable = false)
 	private int unitCost;
+	@Column(name="pack_size", nullable = false)
 	private String packSize;
+	@Column(name="reorder_quantity", nullable = false)
 	private int reorderQuantity;
+	@Column(name="reorder_threshold", nullable = false)
 	private int reorderThreshold;
+	@Column(name="quantity_on_hand", nullable = false)
 	private int quantityOnHand;
+	@Column(name="retail_price", nullable = false)
 	private int retailPrice;
+	@Column(name="product_weight")
 	private int productWeight;
+	@Column(name="product_image")
 	private Blob productImage;
+	
+	@OneToMany(mappedBy="product")
+	Set<ProductCategory> productCategories;
 	
 	public Product() {
 		super();

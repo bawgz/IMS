@@ -7,12 +7,14 @@ import javax.persistence.*;
 @Embeddable
 public class ProductCategoriesId implements Serializable{
 
+	//mappings
 	@ManyToOne()
 	@JoinColumn(name="product_upc")
 	private Product product;
 	@ManyToOne()
 	@JoinColumn(name="category_id")
 	private ProductCategory productCategory;
+	
 	public ProductCategoriesId(Product product, ProductCategory productCategory) {
 		super();
 		this.product = product;

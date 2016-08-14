@@ -22,12 +22,15 @@ public class PurchaseOrder {
 	private int taxAmount;
 	@Column(name="po_total")
 	private int poTotal;
+	
+	//mappings
 	@ManyToOne()
 	@JoinColumn(name="client_id")
 	private Client client;
 	//TODO create composite key for IMS_PO_LINE
-	@OneToMany(mappedBy="")
+	@OneToMany(mappedBy="purchaseOrder")
 	private Set<PoLine> poLines;
+	
 	public PurchaseOrder(int orderNumber, int subtotal, Date purchaseDate, int taxAmount, int poTotal, Client client) {
 		super();
 		this.orderNumber = orderNumber;
@@ -40,7 +43,6 @@ public class PurchaseOrder {
 	}
 	public PurchaseOrder() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public int getOrderNumber() {
 		return orderNumber;

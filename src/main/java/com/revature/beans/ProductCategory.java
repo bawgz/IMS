@@ -14,6 +14,8 @@ public class ProductCategory {
 	private int categoryId;
 	@Column(name="category_description")
 	private String categoryDescription;
+	
+	//mappings
 	@OneToMany(mappedBy="productCategory")
 	Set<ProductCategories> productCategories;
 	

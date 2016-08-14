@@ -1,22 +1,38 @@
 package com.revature.beans;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ims_address")
 public class Address {
 
-	private int addressId;
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ims_address_id", nullable = false)
+	private int imsAddressId;
+	@Column(name="street_address_1", nullable = false)
 	private String streetAddress1;
+	@Column(name="street_address_2", nullable = false)
 	private String streetAddress2;
+	@Column(name="address_city", nullable = false)
 	private String addressCity;
+	@JoinColumn(name="abbrv_id", nullable = false)
 	private int stateId;
+	@Column(name="address_zip", nullable = false)
 	private String addressZip;
+	
+	//mappings
+	@ManyToOne()
+	private StateAbbrv stateAbbrv;
 	
 	public Address() {
 		super();
 	}
 
-	public Address(int addressId, String streetAddress1, String streetAddress2, String addressCity, int stateId,
+	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, int stateId,
 			String addressZip) {
 		super();
-		this.addressId = addressId;
+		this.imsAddressId = imsAddressId;
 		this.streetAddress1 = streetAddress1;
 		this.streetAddress2 = streetAddress2;
 		this.addressCity = addressCity;
@@ -25,11 +41,11 @@ public class Address {
 	}
 
 	public int getAddressId() {
-		return addressId;
+		return imsAddressId;
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddressId(int imsAddressId) {
+		this.imsAddressId = imsAddressId;
 	}
 
 	public String getStreetAddress1() {
