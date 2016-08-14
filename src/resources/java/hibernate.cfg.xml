@@ -26,14 +26,13 @@
 		<property name="show_sql">	<!-- writes sql statements to console -->
 			true
 		</property>
-		<mapping class="com.revature.beans.imsStateAbbrv"/>	<!-- annotated bean -->
-		<mapping class="com.revature.beans.imsAddress"/>
-		<mapping class="com.revature.beans.imsPoLine"/>
-		<mapping class="com.revature.beans.imsProduct"/>
-		<mapping class="com.revature.beans.imsClient"/>
-		<mapping class="com.revature.beans.imsPurchaseOrder"/>
-		<mapping class="com.revature.beans.productCategories"/>
-		<mapping class="com.revature.beans.imsClientType"/>
-		<mapping class="com.revature.beans.imsProductCategory"/>
+		<mapping class="com.revature.beans.StateAbbrv"/>	<!-- annotated bean -->
+		<mapping class="com.revature.beans.Address"/>
+		<mapping class="com.revature.beans.PoLine"/>
+		<mapping class="com.revature.beans.Product"/>
+		<mapping class="com.revature.beans.Client"/>
+		<mapping class="com.revature.beans.PurchaseOrder"/>
+		<mapping class="com.revature.beans.ClientType"/>
+		<mapping class="com.revature.beans.ProductCategory"/>
 	</session-factory>
 </hibernate-configuration>
