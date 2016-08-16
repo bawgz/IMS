@@ -33,6 +33,7 @@ public class Client {
 	private ClientType clientType;
 	@OneToMany(mappedBy="client")
 	private Set<PurchaseOrder> purchaseOrders;
+	
 	public Client(int imsClientId, String clientName, String clinetEmail, String pointOfContactName, String clientPhone,
 			String clientFax, Address address, ClientType clientType) {
 		super();
@@ -97,5 +98,26 @@ public class Client {
 	}
 	public void setClientTypeId(ClientType clientType) {
 		this.clientType = clientType;
+	}
+	public String getClientEmail() {
+		return clientEmail;
+	}
+	public void setClientEmail(String clientEmail) {
+		this.clientEmail = clientEmail;
+	}
+	public ClientType getClientType() {
+		return clientType;
+	}
+	public void setClientType(ClientType clientType) {
+		this.clientType = clientType;
+	}
+	public Set<PurchaseOrder> getPurchaseOrders() {
+		return purchaseOrders;
+	}
+	public void setPurchaseOrders(Set<PurchaseOrder> purchaseOrders) {
+		this.purchaseOrders = purchaseOrders;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
