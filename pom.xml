@@ -39,13 +39,11 @@
   	  <groupId>com.oracle</groupId>
   	  <artifactId>ojdbc6</artifactId>
   	  <version>11.2.0</version>
-    </dependency>
-    <!-- 
+    </dependency> 
     <dependency>
     	<groupId>com.amazonaws</groupId>
     	<artifactId>aws-java-sdk</artifactId>
     	<version>1.11.22</version>
     </dependency>
-    -->
   </dependencies>
 </project>

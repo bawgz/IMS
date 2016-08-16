@@ -21,7 +21,7 @@
 		<!-- required properties -->
 		<!-- optional properties -->
 		<property name="hibernate.dialect">
-			org.hibernate.dialect.Oracle11gDialect
+			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		<property name="hibernate.hbm2ddl.auto">
 			update
