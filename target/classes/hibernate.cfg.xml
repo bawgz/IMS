@@ -7,11 +7,7 @@
 			oracle.jdbc.OracleDriver
 		</property>		
 		<property name="hibernate.connection.url">
-<<<<<<< HEAD
-			jdbc:oracle:thin:@localhost:1521:xe
-=======
 			jdbc:oracle:thin:@orcl.cmbbpfjzaax6.us-east-1.rds.amazonaws.com:1521:orcl
->>>>>>> 61b3ae1bba06885eeabb6f1e58fbabe5bfc7fb09
 		</property>
 		<property name="hibernate.connection.username">
 			demo
@@ -24,11 +20,7 @@
 		</property>
 		<!-- required properties -->
 		<!-- optional properties -->
-<<<<<<< HEAD
 		<property name="hibernate.dialect">	<!-- which SQL database you are using -->
-=======
-		<property name="hibernate.dialect">
->>>>>>> 61b3ae1bba06885eeabb6f1e58fbabe5bfc7fb09
 			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		<property name="hibernate.hbm2ddl.auto">

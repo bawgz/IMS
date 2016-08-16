@@ -16,44 +16,35 @@ public class Address {
 	private String streetAddress2;
 	@Column(name="address_city", nullable = false)
 	private String addressCity;
-<<<<<<< HEAD
 	@JoinColumn(name="state_id", nullable = false)
 	private int stateId;
 	@Column(name="address_zip", nullable = false)
 	private String addressZip;
 	
 	//mappings
-//	@ManyToOne()
-//	private StateAbbrv stateAbbrv;
-=======
 	@ManyToOne()
-	@JoinColumn(name="state_id", nullable = false)
 	private StateAbbrv stateAbbrv;
-	@Column(name="address_zip", nullable = false)
-	private String addressZip;
-	
->>>>>>> 61b3ae1bba06885eeabb6f1e58fbabe5bfc7fb09
 	
 	public Address() {
 		super();
 	}
 
-	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, StateAbbrv stateAbbrv,
+	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, int stateId,
 			String addressZip) {
 		super();
 		this.imsAddressId = imsAddressId;
 		this.streetAddress1 = streetAddress1;
 		this.streetAddress2 = streetAddress2;
 		this.addressCity = addressCity;
-		this.stateAbbrv = stateAbbrv;
+		this.stateId = stateId;
 		this.addressZip = addressZip;
 	}
 
-	public int getAddressId() {
+	public int getImsAddressId() {
 		return imsAddressId;
 	}
 
-	public void setAddressId(int imsAddressId) {
+	public void setImsAddressId(int imsAddressId) {
 		this.imsAddressId = imsAddressId;
 	}
 
@@ -81,20 +72,12 @@ public class Address {
 		this.addressCity = addressCity;
 	}
 
-	public int getImsAddressId() {
-		return imsAddressId;
+	public int getStateId() {
+		return stateId;
 	}
 
-	public void setImsAddressId(int imsAddressId) {
-		this.imsAddressId = imsAddressId;
-	}
-
-	public StateAbbrv getStateAbbrv() {
-		return stateAbbrv;
-	}
-
-	public void setStateAbbrv(StateAbbrv stateAbbrv) {
-		this.stateAbbrv = stateAbbrv;
+	public void setStateId(int stateId) {
+		this.stateId = stateId;
 	}
 
 	public String getAddressZip() {
@@ -103,6 +86,14 @@ public class Address {
 
 	public void setAddressZip(String addressZip) {
 		this.addressZip = addressZip;
+	}
+
+	public StateAbbrv getStateAbbrv() {
+		return stateAbbrv;
+	}
+
+	public void setStateAbbrv(StateAbbrv stateAbbrv) {
+		this.stateAbbrv = stateAbbrv;
 	}
 	
 }
