@@ -55,5 +55,12 @@ public class StateAbbrv {
 	public void setStateAbbrev(String stateAbbrev) {
 		this.stateAbbrev = stateAbbrev;
 	}
-	
+
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
 }

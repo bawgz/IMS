@@ -32,11 +32,11 @@
 		<!-- optional properties -->
 		<mapping class="com.revature.beans.StateAbbrv"/>	<!-- annotated bean -->
 		<mapping class="com.revature.beans.Address"/>
-		<!-- <mapping class="com.revature.beans.PoLine"/>
+		<mapping class="com.revature.beans.PoLine"/>
 		<mapping class="com.revature.beans.Product"/>
 		<mapping class="com.revature.beans.Client"/>
 		<mapping class="com.revature.beans.PurchaseOrder"/>
-		<mapping class="com.revature.beans.ClientType"/>
-		<mapping class="com.revature.beans.ProductCategory"/>-->
+		<mapping class="com.revature.beans.ClientType"/> 
+		<mapping class="com.revature.beans.ProductCategory"/>
 	</session-factory>
 </hibernate-configuration>
