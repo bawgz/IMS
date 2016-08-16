@@ -100,4 +100,25 @@ public class Client {
 	public void setClientTypeId(ClientType clientType) {
 		this.clientType = clientType;
 	}
+	public String getClientEmail() {
+		return clientEmail;
+	}
+	public void setClientEmail(String clientEmail) {
+		this.clientEmail = clientEmail;
+	}
+	public ClientType getClientType() {
+		return clientType;
+	}
+	public void setClientType(ClientType clientType) {
+		this.clientType = clientType;
+	}
+	public Set<PurchaseOrder> getPurchaseOrders() {
+		return purchaseOrders;
+	}
+	public void setPurchaseOrders(Set<PurchaseOrder> purchaseOrders) {
+		this.purchaseOrders = purchaseOrders;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 }

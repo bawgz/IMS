@@ -1,9 +1,14 @@
 package com.revature.hibernate;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Date;
 
 import com.revature.beans.Address;
+import com.revature.beans.Client;
+import com.revature.beans.ClientType;
+import com.revature.beans.PoLine;
+import com.revature.beans.PoLineId;
+import com.revature.beans.Product;
+import com.revature.beans.PurchaseOrder;
 import com.revature.beans.StateAbbrv;
 
 public class App {
@@ -23,6 +28,7 @@ public class App {
 
 		DataLayer dataLayer = new DataLayer();
 
+<<<<<<< HEAD
 		for(int i=0; i<stateArr.length; i++){
 			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
 			dataLayer.insert(sa);
@@ -36,7 +42,29 @@ public class App {
 //		dataLayer.insert(address);
 //		System.out.println("address added");
 
+=======
+//		for(int i=0; i<stateArr.length; i++){
+//			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
+//			dataLayer.insert(sa);
+//		}
+>>>>>>> 6db19b7ec107fc877b10d11da36235b50be58e7a
 
+//		DataLayer dataLayer = new DataLayer();
+//		StateAbbrv sa = new StateAbbrv(1,"Alabama","AL");
+//		Address a = new Address(1,"Hello","World","Yes",sa,"60510");
+//		ClientType ct = new ClientType(1,"Supplier");
+//		dataLayer.insert(ct);
+//		Client client = new Client(1, "Luke", "luke@ok", "Nick", "8675309", "yeah", a, ct);
+//		dataLayer.insert(client);
+//		PurchaseOrder po = new PurchaseOrder(1, 100, new Date(), 10, 110, client);
+//		dataLayer.insert(po);
+//		PoLineId poLineId = new PoLineId();
+//		dataLayer.insert(poLineId);
+//		Product p = new Product(10,"Stuff", "It's stuff", "STU", 100,"box",3,5,10,100,100,null);
+//		dataLayer.insert(p);
+//		PoLine poLine = new PoLine(poLineId,100,10,p);
+//		dataLayer.insert(poLine);
+//		System.out.println("Complete");
 	}
 
 }

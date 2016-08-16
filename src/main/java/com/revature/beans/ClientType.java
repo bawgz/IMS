@@ -1,8 +1,15 @@
 package com.revature.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="ims_client_type")
@@ -21,6 +28,7 @@ public class ClientType {
 		super();
 		this.clientTypeId = clientTypeId;
 		this.clientType = clientType;
+		clients = new HashSet<Client>();
 	}
 	public ClientType() {
 		super();

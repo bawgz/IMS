@@ -61,22 +61,23 @@ public class PoLine {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-//	public int getProductUpc() {
-//		return productUpc;
-//	}
-//
-//	public void setProductUpc(int productUpc) {
-//		this.productUpc = productUpc;
-//	}
-//
-//	public PurchaseOrder getPurchaseOrder() {
-//		return purchaseOrder;
-//	}
-//
-//	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-//		this.purchaseOrder = purchaseOrder;
-//	}
 
+	public PurchaseOrder getPurchaseOrder() {
+		return poLineId.getOrderNumber();
+	}
+
+	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
+		poLineId.setOrderNumber(purchaseOrder);
+	}
+
+	public int getLineNumber(){
+		return poLineId.getLineNumber();
+	}
+	
+	public void setLineNumber(int ln){
+		poLineId.setLineNumber(ln);
+	}
+	
 	public Product getProduct() {
 		return product;
 	}

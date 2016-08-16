@@ -1,8 +1,15 @@
 package com.revature.beans;
 
+import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="ims_state_abbrv")
@@ -30,6 +37,7 @@ public class StateAbbrv {
 		this.abbrevId = abbrevId;
 		this.stateName = stateName;
 		this.stateAbbrev = stateAbbrev;
+		addresses = new HashSet<Address>();
 	}
 
 	public int getAbbrevId() {
