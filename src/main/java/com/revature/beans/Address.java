@@ -16,6 +16,7 @@ public class Address {
 	private String streetAddress2;
 	@Column(name="address_city", nullable = false)
 	private String addressCity;
+<<<<<<< HEAD
 	@JoinColumn(name="state_id", nullable = false)
 	private int stateId;
 	@Column(name="address_zip", nullable = false)
@@ -24,19 +25,27 @@ public class Address {
 	//mappings
 //	@ManyToOne()
 //	private StateAbbrv stateAbbrv;
+=======
+	@ManyToOne()
+	@JoinColumn(name="state_id", nullable = false)
+	private StateAbbrv stateAbbrv;
+	@Column(name="address_zip", nullable = false)
+	private String addressZip;
+	
+>>>>>>> 61b3ae1bba06885eeabb6f1e58fbabe5bfc7fb09
 	
 	public Address() {
 		super();
 	}
 
-	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, int stateId,
+	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, StateAbbrv stateAbbrv,
 			String addressZip) {
 		super();
 		this.imsAddressId = imsAddressId;
 		this.streetAddress1 = streetAddress1;
 		this.streetAddress2 = streetAddress2;
 		this.addressCity = addressCity;
-		this.stateId = stateId;
+		this.stateAbbrv = stateAbbrv;
 		this.addressZip = addressZip;
 	}
 
@@ -72,12 +81,20 @@ public class Address {
 		this.addressCity = addressCity;
 	}
 
-	public int getStateId() {
-		return stateId;
+	public int getImsAddressId() {
+		return imsAddressId;
 	}
 
-	public void setStateId(int stateId) {
-		this.stateId = stateId;
+	public void setImsAddressId(int imsAddressId) {
+		this.imsAddressId = imsAddressId;
+	}
+
+	public StateAbbrv getStateAbbrv() {
+		return stateAbbrv;
+	}
+
+	public void setStateAbbrv(StateAbbrv stateAbbrv) {
+		this.stateAbbrv = stateAbbrv;
 	}
 
 	public String getAddressZip() {
