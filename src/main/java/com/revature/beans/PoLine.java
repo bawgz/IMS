@@ -6,13 +6,20 @@ import javax.persistence.*;
 @Table(name="ims_po_line")
 public class PoLine {
 
-	@EmbeddedId
-	private PoLineId poLineId;
 	@Column(name="unit_price", nullable = false)
 	private int unitPrice;
 	@Column(name="quantity_ordered", nullable = false)
 	private int quantityOrdered;
+	
+	//mappings
+	@EmbeddedId
+	private PoLineId poLineId;
+	
 	@ManyToOne()
+	@MapsId("orderNumber")
+	private PurchaseOrder purchaseOrder;
+	
+	@ManyToOne
 	@JoinColumn(name="product_upc", nullable = false)
 	private Product product;
 	

@@ -9,35 +9,35 @@ import javax.persistence.ManyToOne;
 
 @Embeddable
 public class PoLineId implements Serializable {
-	@ManyToOne()
+	
 	@JoinColumn(name="order_number", nullable = false)
-	private PurchaseOrder purchaseOrder;
+	private Integer orderNumber;
 	@Column(name="line_number", nullable = false)
-	private int lineNumber;
+	private Integer lineNumber;
 	
 	public PoLineId() {
 		super();
 	}
 
-	public PoLineId(PurchaseOrder purchaseOrder, int lineNumber) {
+	public PoLineId(Integer orderNumber, Integer lineNumber) {
 		super();
-		this.purchaseOrder = purchaseOrder;
+		this.orderNumber = orderNumber;
 		this.lineNumber = lineNumber;
 	}
 
-	public PurchaseOrder getOrderNumber() {
-		return purchaseOrder;
+	public Integer getOrderNumber() {
+		return orderNumber;
 	}
 
-	public void setOrderNumber(PurchaseOrder purchaseOrder) {
-		this.purchaseOrder = purchaseOrder;
+	public void setOrderNumber(Integer orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 
-	public int getLineNumber() {
+	public Integer getLineNumber() {
 		return lineNumber;
 	}
 
-	public void setLineNumber(int lineNumber) {
+	public void setLineNumber(Integer lineNumber) {
 		this.lineNumber = lineNumber;
 	}
 	
