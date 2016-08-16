@@ -16,7 +16,7 @@ public class App {
 //		dataLayer.insert(stateAbbrv);
 //		System.out.println("state_abbrv added");
 		
-		Address address = new Address(0, "732 Farmhouse Road", null, "Mickleton", 9, "08056");
+		Address address = new Address(0, "732 Farmhouse Road", "", "Mickleton", 9, "08056");
 		dataLayer.insert(address);
 		System.out.println("address added");
 

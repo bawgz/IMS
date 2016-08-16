@@ -26,7 +26,7 @@ public class Client {
 	
 	//mappings
 	@OneToOne()
-	@JoinColumn(name="address_id", unique = true, nullable = false)
+	@JoinColumn(name="address_id", nullable = false)
 	private Address address;
 	@ManyToOne()
 	@JoinColumn(name="client_type_id", nullable = false)
