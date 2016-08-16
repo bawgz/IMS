@@ -22,14 +22,21 @@ public class App {
 //				"OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"};
 //
 		DataLayer dataLayer = new DataLayer();
+
 //		for(int i=0; i<stateArr.length; i++){
 //			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
 //			dataLayer.insertObject(sa);
 //		}
 		StateAbbrv sa = new StateAbbrv(6,"Alabama","AL");
 		Address a = new Address(1,"Hello","World","Yes",sa,"60510");
-		dataLayer.insertObject(a);
+		dataLayer.insert(a);
 		
+//		
+//		Address address = new Address(0, "732 Farmhouse Road", "", "Mickleton", 10, "08056");
+//		dataLayer.insert(address);
+//		System.out.println("address added");
+
+
 	}
 
 }

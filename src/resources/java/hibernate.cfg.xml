@@ -20,7 +20,7 @@
 		</property>
 		<!-- required properties -->
 		<!-- optional properties -->
-		<property name="hibernate.dialect">
+		<property name="hibernate.dialect">	<!-- which SQL database you are using -->
 			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		<property name="hibernate.hbm2ddl.auto">

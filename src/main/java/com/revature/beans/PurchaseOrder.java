@@ -25,7 +25,7 @@ public class PurchaseOrder {
 	
 	//mappings
 	@ManyToOne()
-	@JoinColumn(name="client_id")
+	@JoinColumn(name="client_id", nullable = false)
 	private Client client;
 	@OneToMany(mappedBy="product")
 	private Set<PoLine> poLines;

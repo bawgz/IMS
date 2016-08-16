@@ -23,7 +23,7 @@ public class DataLayer {
 		if(session != null) session.close();
 	}
 	
-	public void insertObject(Object obj) {
+	public void insert(Object obj) {
 		Transaction tx = session.beginTransaction();
 		try {
 			dao.insert(obj);	//can call multiple daos or dao methods

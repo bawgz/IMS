@@ -12,7 +12,7 @@ public class Address {
 	private int imsAddressId;
 	@Column(name="street_address_1", nullable = false)
 	private String streetAddress1;
-	@Column(name="street_address_2", nullable = false)
+	@Column(name="street_address_2")
 	private String streetAddress2;
 	@Column(name="address_city", nullable = false)
 	private String addressCity;
@@ -22,13 +22,15 @@ public class Address {
 	@Column(name="address_zip", nullable = false)
 	private String addressZip;
 	
+	//mappings
 	
 	public Address() {
 		super();
 	}
+	
 
-	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity, StateAbbrv stateAbbrv,
-			String addressZip) {
+	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity,
+			StateAbbrv stateAbbrv, String addressZip) {
 		super();
 		this.imsAddressId = imsAddressId;
 		this.streetAddress1 = streetAddress1;
@@ -38,11 +40,13 @@ public class Address {
 		this.addressZip = addressZip;
 	}
 
-	public int getAddressId() {
+
+
+	public int getImsAddressId() {
 		return imsAddressId;
 	}
 
-	public void setAddressId(int imsAddressId) {
+	public void setImsAddressId(int imsAddressId) {
 		this.imsAddressId = imsAddressId;
 	}
 
@@ -68,14 +72,6 @@ public class Address {
 
 	public void setAddressCity(String addressCity) {
 		this.addressCity = addressCity;
-	}
-
-	public int getImsAddressId() {
-		return imsAddressId;
-	}
-
-	public void setImsAddressId(int imsAddressId) {
-		this.imsAddressId = imsAddressId;
 	}
 
 	public StateAbbrv getStateAbbrv() {
