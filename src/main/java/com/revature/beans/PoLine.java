@@ -16,12 +16,6 @@ public class PoLine {
 	@JoinColumn(name="product_upc", nullable = false)
 	private Product product;
 	
-	//mappings
-//	@ManyToOne()
-//	private PurchaseOrder purchaseOrder;
-//	@ManyToOne()
-//	private Product product;
-	
 	public PoLine() {
 		super();
 	}

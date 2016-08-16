@@ -16,13 +16,13 @@ public class Address {
 	private String streetAddress2;
 	@Column(name="address_city", nullable = false)
 	private String addressCity;
-	@ManyToOne()
-	@JoinColumn(name="state_id", nullable = false)
-	private StateAbbrv stateAbbrv;
 	@Column(name="address_zip", nullable = false)
 	private String addressZip;
 	
 	//mappings
+	@ManyToOne()
+	@JoinColumn(name="state_id", nullable = false)
+	private StateAbbrv stateAbbrv;
 	
 	public Address() {
 		super();

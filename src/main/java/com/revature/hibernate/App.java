@@ -20,12 +20,12 @@ public class App {
 //		String[] abbreviations = new String[]{"AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA",
 //				"KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND", "OH","OK",
 //				"OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"};
-//
+
 		DataLayer dataLayer = new DataLayer();
 
 //		for(int i=0; i<stateArr.length; i++){
 //			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
-//			dataLayer.insertObject(sa);
+//			dataLayer.insert(sa);
 //		}
 		StateAbbrv sa = new StateAbbrv(6,"Alabama","AL");
 		Address a = new Address(1,"Hello","World","Yes",sa,"60510");
