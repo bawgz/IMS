@@ -23,10 +23,10 @@ public class DataLayer {
 		if(session != null) session.close();
 	}
 	
-	public void insertStateAbbrv(StateAbbrv stateAbbrv) {
+	public void insert(Object obj) {
 		Transaction tx = session.beginTransaction();
 		try {
-			dao.insert(stateAbbrv);	//can call multiple daos or dao methods
+			dao.insert(obj);	//can call multiple daos or dao methods
 			tx.commit();
 		}
 		catch(Throwable t) {

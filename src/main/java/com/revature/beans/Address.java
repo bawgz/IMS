@@ -12,18 +12,18 @@ public class Address {
 	private int imsAddressId;
 	@Column(name="street_address_1", nullable = false)
 	private String streetAddress1;
-	@Column(name="street_address_2", nullable = false)
+	@Column(name="street_address_2")
 	private String streetAddress2;
 	@Column(name="address_city", nullable = false)
 	private String addressCity;
-	@JoinColumn(name="abbrv_id", nullable = false)
+	@JoinColumn(name="state_id", nullable = false)
 	private int stateId;
 	@Column(name="address_zip", nullable = false)
 	private String addressZip;
 	
 	//mappings
-	@ManyToOne()
-	private StateAbbrv stateAbbrv;
+//	@ManyToOne()
+//	private StateAbbrv stateAbbrv;
 	
 	public Address() {
 		super();

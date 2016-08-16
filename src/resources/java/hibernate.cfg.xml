@@ -7,21 +7,21 @@
 			oracle.jdbc.OracleDriver
 		</property>		
 		<property name="hibernate.connection.url">
-			orcl.cmbbpfjzaax6.us-east-1.rds.amazonaws.com
+			jdbc:oracle:thin:@localhost:1521:xe
 		</property>
 		<property name="hibernate.connection.username">
-			nsbrasco
+			demo
 		</property>
 		<property name="hibernate.connection.password">
-			codebenders
+			demo
 		</property>
 		<property name="hibernate.connection.pool_size">
 			20
 		</property>
 		<!-- required properties -->
 		<!-- optional properties -->
-		<property name="hibernate.dialect">
-			org.hibernate.dialect.Oracle11gDialect
+		<property name="hibernate.dialect">	<!-- which SQL database you are using -->
+			org.hibernate.dialect.Oracle10gDialect
 		</property>
 		<property name="hibernate.hbm2ddl.auto">
 			update
