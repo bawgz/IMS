@@ -61,15 +61,6 @@ public class PoLine {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-
-	public PurchaseOrder getPurchaseOrder() {
-		return poLineId.getOrderNumber();
-	}
-
-	public void setPurchaseOrder(PurchaseOrder purchaseOrder) {
-		poLineId.setOrderNumber(purchaseOrder);
-	}
-
 	public int getLineNumber(){
 		return poLineId.getLineNumber();
 	}
