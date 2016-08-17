@@ -27,8 +27,7 @@ public class App {
 				"OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"};
 
 		DataLayer dataLayer = new DataLayer();
-
-<<<<<<< HEAD
+		
 		for(int i=0; i<stateArr.length; i++){
 			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
 			dataLayer.insert(sa);
@@ -37,17 +36,6 @@ public class App {
 		Address a = new Address(1,"Hello","World","Yes",sa,"60510");
 		dataLayer.insert(a);
 		
-//		
-//		Address address = new Address(0, "732 Farmhouse Road", "", "Mickleton", 10, "08056");
-//		dataLayer.insert(address);
-//		System.out.println("address added");
-
-=======
-//		for(int i=0; i<stateArr.length; i++){
-//			StateAbbrv sa = new StateAbbrv(i,stateArr[i],abbreviations[i]);
-//			dataLayer.insert(sa);
-//		}
->>>>>>> 6db19b7ec107fc877b10d11da36235b50be58e7a
 
 //		DataLayer dataLayer = new DataLayer();
 //		StateAbbrv sa = new StateAbbrv(1,"Alabama","AL");
