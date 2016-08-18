@@ -12,7 +12,8 @@ public class PurchaseOrder {
 
 	@Id
 	@Column(name="order_number", nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="purchaseOrderGen",sequenceName="IMS_PO_SEQ")
+	@GeneratedValue(generator="purchaseOrderGen", strategy=GenerationType.AUTO)
 	private int orderNumber;
 	@Column(name="subtotal", nullable = false)
 	private int subtotal;

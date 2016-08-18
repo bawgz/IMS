@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -19,8 +20,9 @@ import javax.persistence.Table;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="product_upc", nullable = false)
+	@SequenceGenerator(name="productGen",sequenceName="IMS_PRODUCT_SEQ")
+	@GeneratedValue(generator="productGen", strategy=GenerationType.AUTO)
 	private int productUpc;
 	@Column(name="product_name", nullable = false)
 	private String productName;

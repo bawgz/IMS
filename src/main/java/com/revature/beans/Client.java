@@ -11,7 +11,8 @@ public class Client {
 
 	@Id
 	@Column(name="ims_client_id", nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="clientGen",sequenceName="IMS_CLIENT_SEQ")
+	@GeneratedValue(generator="clientGen", strategy=GenerationType.AUTO)
 	private int imsClientId;
 	@Column(name="client_name", nullable = false)
 	private String clientName;

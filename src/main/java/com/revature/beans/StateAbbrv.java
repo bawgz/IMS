@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +17,8 @@ import javax.persistence.Table;
 public class StateAbbrv {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="stateAbbrvGen",sequenceName="IMS_SA_SEQ")
+	@GeneratedValue(generator="stateAbbrvGen", strategy=GenerationType.AUTO)
 	@Column(name="abbrv_id", nullable = false)
 	private int abbrevId;
 	@Column(name="state_name", nullable = false)
