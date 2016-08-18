@@ -1,6 +1,11 @@
 package com.revature.hibernate;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
+
+import com.revature.beans.ProductCategory;
 
 public class HibernateDao {
 
@@ -14,4 +19,8 @@ public class HibernateDao {
 		session.save(obj);
 	}
 	
+	public List<ProductCategory> getProductCategories() {
+		Query query = session.createQuery("from ims_product_categories");
+		return query.list();
+	}
 }
