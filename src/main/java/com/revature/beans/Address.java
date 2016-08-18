@@ -7,7 +7,8 @@ import javax.persistence.*;
 public class Address {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="addressGen",sequenceName="IMS_ADDRESS_SEQ")
+	@GeneratedValue(generator="addressGen", strategy=GenerationType.AUTO)
 	@Column(name="ims_address_id", nullable = false)
 	private int imsAddressId;
 	@Column(name="street_address_1", nullable = false)
@@ -28,19 +29,14 @@ public class Address {
 		super();
 	}
 	
-
-	public Address(int imsAddressId, String streetAddress1, String streetAddress2, String addressCity,
-			StateAbbrv stateAbbrv, String addressZip) {
+	public Address(String streetAddress1, String streetAddress2, String addressCity, StateAbbrv stateAbbrv, String addressZip) {
 		super();
-		this.imsAddressId = imsAddressId;
 		this.streetAddress1 = streetAddress1;
 		this.streetAddress2 = streetAddress2;
 		this.addressCity = addressCity;
 		this.stateAbbrv = stateAbbrv;
 		this.addressZip = addressZip;
 	}
-
-
 
 	public int getImsAddressId() {
 		return imsAddressId;

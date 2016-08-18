@@ -11,7 +11,8 @@ public class Client {
 
 	@Id
 	@Column(name="ims_client_id", nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="clientGen",sequenceName="IMS_CLIENT_SEQ")
+	@GeneratedValue(generator="clientGen", strategy=GenerationType.AUTO)
 	private int imsClientId;
 	@Column(name="client_name", nullable = false)
 	private String clientName;
@@ -35,10 +36,13 @@ public class Client {
 	@OneToMany(mappedBy="client")
 	private Set<PurchaseOrder> purchaseOrders;
 	
-	public Client(int imsClientId, String clientName, String clinetEmail, String pointOfContactName, String clientPhone,
+	public Client() {
+		super();
+	}
+	
+	public Client(String clientName, String clinetEmail, String pointOfContactName, String clientPhone,
 			String clientFax, Address address, ClientType clientType) {
 		super();
-		this.imsClientId = imsClientId;
 		this.clientName = clientName;
 		this.clientEmail = clinetEmail;
 		this.pointOfContactName = pointOfContactName;
@@ -46,12 +50,8 @@ public class Client {
 		this.clientFax = clientFax;
 		this.address = address;
 		this.clientType = clientType;
-		purchaseOrders = new HashSet<PurchaseOrder>();
 	}
-	public Client() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	public int getImsClientId() {
 		return imsClientId;
 	}

@@ -12,16 +12,17 @@ public class PurchaseOrder {
 
 	@Id
 	@Column(name="order_number", nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="purchaseOrderGen",sequenceName="IMS_PO_SEQ")
+	@GeneratedValue(generator="purchaseOrderGen", strategy=GenerationType.AUTO)
 	private int orderNumber;
 	@Column(name="subtotal", nullable = false)
-	private int subtotal;
+	private double subtotal;
 	@Column(name="purchase_date", nullable = false)
 	private Date purchaseDate;
 	@Column(name="tax_amount", nullable = false)
-	private int taxAmount;
+	private double taxAmount;
 	@Column(name="po_total", nullable = false)
-	private int poTotal;
+	private double poTotal;
 	
 	//mappings
 	@ManyToOne()
@@ -34,16 +35,13 @@ public class PurchaseOrder {
 		super();
 	}
 
-	public PurchaseOrder(int orderNumber, int subtotal, Date purchaseDate, int taxAmount, int poTotal, Client client,
-			Set<PoLine> poLines) {
+	public PurchaseOrder(double subtotal, Date purchaseDate, double taxAmount, double poTotal, Client client) {
 		super();
-		this.orderNumber = orderNumber;
 		this.subtotal = subtotal;
 		this.purchaseDate = purchaseDate;
 		this.taxAmount = taxAmount;
 		this.poTotal = poTotal;
 		this.client = client;
-		this.poLines = poLines;
 	}
 
 	public int getOrderNumber() {
@@ -54,11 +52,11 @@ public class PurchaseOrder {
 		this.orderNumber = orderNumber;
 	}
 
-	public int getSubtotal() {
+	public double getSubtotal() {
 		return subtotal;
 	}
 
-	public void setSubtotal(int subtotal) {
+	public void setSubtotal(double subtotal) {
 		this.subtotal = subtotal;
 	}
 
@@ -70,19 +68,19 @@ public class PurchaseOrder {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public int getTaxAmount() {
+	public double getTaxAmount() {
 		return taxAmount;
 	}
 
-	public void setTaxAmount(int taxAmount) {
+	public void setTaxAmount(double taxAmount) {
 		this.taxAmount = taxAmount;
 	}
 
-	public int getPoTotal() {
+	public double getPoTotal() {
 		return poTotal;
 	}
 
-	public void setPoTotal(int poTotal) {
+	public void setPoTotal(double poTotal) {
 		this.poTotal = poTotal;
 	}
 

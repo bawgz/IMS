@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +21,9 @@ import javax.persistence.Table;
 public class Product {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="product_upc", nullable = false)
+	@SequenceGenerator(name="productGen",sequenceName="IMS_PRODUCT_SEQ")
+	@GeneratedValue(generator="productGen", strategy=GenerationType.AUTO)
 	private int productUpc;
 	@Column(name="product_name", nullable = false)
 	private String productName;
@@ -30,7 +32,7 @@ public class Product {
 	@Column(name="short_name", nullable = false)
 	private String shortName;
 	@Column(name="unit_cost", nullable = false)
-	private int unitCost;
+	private double unitCost;
 	@Column(name="pack_size", nullable = false)
 	private String packSize;
 	@Column(name="reorder_quantity", nullable = false)
@@ -40,14 +42,14 @@ public class Product {
 	@Column(name="quantity_on_hand", nullable = false)
 	private int quantityOnHand;
 	@Column(name="retail_price", nullable = false)
-	private int retailPrice;
+	private double retailPrice;
 	@Column(name="product_weight")
-	private int productWeight;
+	private double productWeight;
 	@Column(name="product_image")
 	private Blob productImage;
 	
 	//mappings
-	@ManyToMany(cascade=CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
@@ -57,10 +59,11 @@ public class Product {
 		super();
 	}
 
-	public Product(int productUpc, String productName, String productDescription, String shortName, int unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, int retailPrice) {
+	//no id, weight, or image
+	public Product(String productName, String productDescription, String shortName, double unitCost,
+			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			Set<ProductCategory> productCategories) {
 		super();
-		this.productUpc = productUpc;
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.shortName = shortName;
@@ -70,13 +73,32 @@ public class Product {
 		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
+		this.productCategories = productCategories;
 	}
 
-	public Product(int productUpc, String productName, String productDescription, String shortName, int unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, int retailPrice,
-			int productWeight, Blob productImage) {
+	//no id or image
+	public Product(String productName, String productDescription, String shortName, double unitCost,
+			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			double productWeight, Set<ProductCategory> productCategories) {
 		super();
-		this.productUpc = productUpc;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.shortName = shortName;
+		this.unitCost = unitCost;
+		this.packSize = packSize;
+		this.reorderQuantity = reorderQuantity;
+		this.reorderThreshold = reorderThreshold;
+		this.quantityOnHand = quantityOnHand;
+		this.retailPrice = retailPrice;
+		this.productWeight = productWeight;
+		this.productCategories = productCategories;
+	}
+
+	//no id
+	public Product(String productName, String productDescription, String shortName, double unitCost,
+			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			double productWeight, Blob productImage, Set<ProductCategory> productCategories) {
+		super();
 		this.productName = productName;
 		this.productDescription = productDescription;
 		this.shortName = shortName;
@@ -88,7 +110,7 @@ public class Product {
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
 		this.productImage = productImage;
-		productCategories = new HashSet<ProductCategory>();
+		this.productCategories = productCategories;
 	}
 
 	public int getProductUpc() {
@@ -123,11 +145,11 @@ public class Product {
 		this.shortName = shortName;
 	}
 
-	public int getUnitCost() {
+	public double getUnitCost() {
 		return unitCost;
 	}
 
-	public void setUnitCost(int unitCost) {
+	public void setUnitCost(double unitCost) {
 		this.unitCost = unitCost;
 	}
 
@@ -163,19 +185,19 @@ public class Product {
 		this.quantityOnHand = quantityOnHand;
 	}
 
-	public int getRetailPrice() {
+	public double getRetailPrice() {
 		return retailPrice;
 	}
 
-	public void setRetailPrice(int retailPrice) {
+	public void setRetailPrice(double retailPrice) {
 		this.retailPrice = retailPrice;
 	}
 
-	public int getProductWeight() {
+	public double getProductWeight() {
 		return productWeight;
 	}
 
-	public void setProductWeight(int productWeight) {
+	public void setProductWeight(double productWeight) {
 		this.productWeight = productWeight;
 	}
 
@@ -194,4 +216,5 @@ public class Product {
 	public void setProductCategories(Set<ProductCategory> productCategories) {
 		this.productCategories = productCategories;
 	}
+	
 }

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -18,26 +19,25 @@ public class ProductCategory {
 
 	@Id
 	@Column(name="category_id", nullable=false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="productCategoryGen",sequenceName="IMS_PC_SEQ")
+	@GeneratedValue(generator="productCategoryGen", strategy=GenerationType.AUTO)
 	private int categoryId;
 	@Column(name="category_description", nullable=false)
 	private String categoryDescription;
 	
 	//mappings
-	@ManyToMany(mappedBy="productCategories", cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="productCategories")
 	Set<Product> products;
 	
-	
-	public ProductCategory(int categoryId, String categoryDescription) {
-		super();
-		this.categoryId = categoryId;
-		this.categoryDescription = categoryDescription;
-		products = new HashSet<Product>();
-	}
 	public ProductCategory() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
+	public ProductCategory(String categoryDescription) {
+		super();
+		this.categoryDescription = categoryDescription;
+	}
+	
 	public int getCategoryId() {
 		return categoryId;
 	}

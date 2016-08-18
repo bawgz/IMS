@@ -11,7 +11,7 @@ public class PoLine {
 	private PoLineId poLineId;
 
 	@Column(name="unit_price", nullable = false)
-	private int unitPrice;
+	private double unitPrice;
 	@Column(name="quantity_ordered", nullable = false)
 	private int quantityOrdered;
 	
@@ -23,12 +23,10 @@ public class PoLine {
 		super();
 	}
 
-	public PoLine(PoLineId poLineId, int unitPrice, int quantityOrdered, Product product) {
+	public PoLine(double unitPrice, int quantityOrdered, Product product) {
 		super();
-		this.poLineId = poLineId;
 		this.unitPrice = unitPrice;
 		this.quantityOrdered = quantityOrdered;
-		this.product = product;
 	}
 
 	public PoLineId getPoLineId() {
@@ -39,11 +37,11 @@ public class PoLine {
 		this.poLineId = poLineId;
 	}
 
-	public int getUnitPrice() {
+	public double getUnitPrice() {
 		return unitPrice;
 	}
 
-	public void setUnitPrice(int unitPrice) {
+	public void setUnitPrice(double unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 

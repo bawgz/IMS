@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +17,8 @@ import javax.persistence.Table;
 public class StateAbbrv {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="stateAbbrvGen",sequenceName="IMS_SA_SEQ")
+	@GeneratedValue(generator="stateAbbrvGen", strategy=GenerationType.AUTO)
 	@Column(name="abbrv_id", nullable = false)
 	private int abbrevId;
 	@Column(name="state_name", nullable = false)
@@ -32,12 +34,17 @@ public class StateAbbrv {
 		super();
 	}
 
+	public StateAbbrv(String stateName, String stateAbbrev) {
+		super();
+		this.stateName = stateName;
+		this.stateAbbrev = stateAbbrev;
+	}
+	
 	public StateAbbrv(int abbrevId, String stateName, String stateAbbrev) {
 		super();
 		this.abbrevId = abbrevId;
 		this.stateName = stateName;
 		this.stateAbbrev = stateAbbrev;
-		addresses = new HashSet<Address>();
 	}
 
 	public int getAbbrevId() {

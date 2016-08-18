@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,23 +18,23 @@ public class ClientType {
 
 	@Id
 	@Column(name="client_type_id", nullable = false)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="clientTypeGen",sequenceName="IMS_CT_SEQ")
+	@GeneratedValue(generator="clientTypeGen", strategy=GenerationType.AUTO)
 	private int clientTypeId;
 	@Column(name="client_type", nullable = false)
 	private String clientType;
 	@OneToMany(mappedBy="clientType")
 	private Set<Client> clients;
 	
-	public ClientType(int clientTypeId, String clientType) {
-		super();
-		this.clientTypeId = clientTypeId;
-		this.clientType = clientType;
-		clients = new HashSet<Client>();
-	}
 	public ClientType() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
+	public ClientType(String clientType) {
+		super();
+		this.clientType = clientType;
+	}
+	
 	public int getClientTypeId() {
 		return clientTypeId;
 	}
