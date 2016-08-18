@@ -4,6 +4,7 @@ import java.sql.Blob;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,7 +47,7 @@ public class Product {
 	private Blob productImage;
 	
 	//mappings
-	@ManyToMany
+	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
@@ -54,6 +55,21 @@ public class Product {
 	
 	public Product() {
 		super();
+	}
+
+	public Product(int productUpc, String productName, String productDescription, String shortName, int unitCost,
+			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, int retailPrice) {
+		super();
+		this.productUpc = productUpc;
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.shortName = shortName;
+		this.unitCost = unitCost;
+		this.packSize = packSize;
+		this.reorderQuantity = reorderQuantity;
+		this.reorderThreshold = reorderThreshold;
+		this.quantityOnHand = quantityOnHand;
+		this.retailPrice = retailPrice;
 	}
 
 	public Product(int productUpc, String productName, String productDescription, String shortName, int unitCost,

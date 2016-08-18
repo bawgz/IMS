@@ -3,6 +3,7 @@ package com.revature.beans;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class ProductCategory {
 	private String categoryDescription;
 	
 	//mappings
-	@ManyToMany(mappedBy="productCategories")
+	@ManyToMany(mappedBy="productCategories", cascade=CascadeType.ALL)
 	Set<Product> products;
 	
 	

@@ -5,11 +5,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="ims_po_line")
 public class PoLine {
-
+	
 	//mappings
 	@EmbeddedId
 	private PoLineId poLineId;
-	
+
 	@Column(name="unit_price", nullable = false)
 	private int unitPrice;
 	@Column(name="quantity_ordered", nullable = false)
