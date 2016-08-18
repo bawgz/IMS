@@ -10,8 +10,9 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class PoLineId implements Serializable {
 	
+	@ManyToOne
 	@JoinColumn(name="order_number", nullable = false)
-	private Integer orderNumber;
+	private PurchaseOrder orderNumber;
 	@Column(name="line_number", nullable = false)
 	private Integer lineNumber;
 	
@@ -19,17 +20,17 @@ public class PoLineId implements Serializable {
 		super();
 	}
 
-	public PoLineId(Integer orderNumber, Integer lineNumber) {
+	public PoLineId(PurchaseOrder orderNumber, Integer lineNumber) {
 		super();
 		this.orderNumber = orderNumber;
 		this.lineNumber = lineNumber;
 	}
 
-	public Integer getOrderNumber() {
+	public PurchaseOrder getOrderNumber() {
 		return orderNumber;
 	}
 
-	public void setOrderNumber(Integer orderNumber) {
+	public void setOrderNumber(PurchaseOrder orderNumber) {
 		this.orderNumber = orderNumber;
 	}
 

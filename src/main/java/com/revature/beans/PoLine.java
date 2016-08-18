@@ -6,18 +6,14 @@ import javax.persistence.*;
 @Table(name="ims_po_line")
 public class PoLine {
 
-	@Column(name="unit_price", nullable = false)
-	private int unitPrice;
-	@Column(name="quantity_ordered", nullable = false)
-	private int quantityOrdered;
-	
 	//mappings
 	@EmbeddedId
 	private PoLineId poLineId;
 	
-	@ManyToOne()
-	@MapsId("orderNumber")
-	private PurchaseOrder purchaseOrder;
+	@Column(name="unit_price", nullable = false)
+	private int unitPrice;
+	@Column(name="quantity_ordered", nullable = false)
+	private int quantityOrdered;
 	
 	@ManyToOne
 	@JoinColumn(name="product_upc", nullable = false)
@@ -32,8 +28,6 @@ public class PoLine {
 		this.poLineId = poLineId;
 		this.unitPrice = unitPrice;
 		this.quantityOrdered = quantityOrdered;
-//		this.productUpc = productUpc;
-//		this.purchaseOrder = purchaseOrder;
 		this.product = product;
 	}
 
@@ -61,14 +55,6 @@ public class PoLine {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-	public int getLineNumber(){
-		return poLineId.getLineNumber();
-	}
-	
-	public void setLineNumber(int ln){
-		poLineId.setLineNumber(ln);
-	}
-	
 	public Product getProduct() {
 		return product;
 	}
