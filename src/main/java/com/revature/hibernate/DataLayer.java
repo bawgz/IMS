@@ -1,8 +1,11 @@
 package com.revature.hibernate;
 
-import org.hibernate.*;
+import java.util.List;
 
-import com.revature.beans.StateAbbrv;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import com.revature.beans.ProductCategory;
 
 //data service
 //data layer
@@ -32,6 +35,10 @@ public class DataLayer {
 		catch(Throwable t) {
 			tx.rollback();
 		}
+	}
+	
+	public List<ProductCategory> getProductCategories() {
+		return dao.getProductCategories();
 	}
 	
 }
