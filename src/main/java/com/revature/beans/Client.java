@@ -14,7 +14,7 @@ public class Client {
 	@Column(name="ims_client_id", nullable = false)
 	@SequenceGenerator(name="clientGen",sequenceName="IMS_CLIENT_SEQ")
 	@GeneratedValue(generator="clientGen", strategy=GenerationType.AUTO)
-	@NotNull	//might not need for primary key?
+	//@NotNull	//might not need for primary key?
 	private int imsClientId;
 	@Column(name="client_name", nullable = false)
 	@NotNull
