@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="ims_client")
@@ -13,16 +14,22 @@ public class Client {
 	@Column(name="ims_client_id", nullable = false)
 	@SequenceGenerator(name="clientGen",sequenceName="IMS_CLIENT_SEQ")
 	@GeneratedValue(generator="clientGen", strategy=GenerationType.AUTO)
+	@NotNull	//might not need for primary key?
 	private int imsClientId;
 	@Column(name="client_name", nullable = false)
+	@NotNull
 	private String clientName;
 	@Column(name="client_email", nullable = false)
+	@NotNull
 	private String clientEmail;
 	@Column(name="point_of_contact_name", nullable = false)
+	@NotNull
 	private String pointOfContactName;
 	@Column(name="client_phone", nullable = false)
+	@NotNull
 	private String clientPhone;
 	@Column(name="client_fax", nullable = false)
+	@NotNull
 	private String clientFax;
 	
 	//mappings
