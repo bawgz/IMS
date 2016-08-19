@@ -33,8 +33,9 @@ public class ProductCategory {
 		super();
 	}
 	
-	public ProductCategory(String categoryDescription) {
+	public ProductCategory(int categoryId, String categoryDescription) {
 		super();
+		this.categoryId = categoryId;
 		this.categoryDescription = categoryDescription;
 	}
 	
@@ -56,4 +57,11 @@ public class ProductCategory {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+
+	@Override
+	public String toString() {
+		return categoryDescription;
+	}
+	
+	
 }

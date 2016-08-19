@@ -20,7 +20,7 @@ public class HibernateDao {
 	}
 	
 	public List<ProductCategory> getProductCategories() {
-		Query query = session.createQuery("from ims_product_categories");
+		Query query = session.createQuery("from ProductCategory");
 		return query.list();
 	}
 }

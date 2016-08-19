@@ -31,9 +31,11 @@ public class DataLayer {
 		try {
 			dao.insert(obj);	//can call multiple daos or dao methods
 			tx.commit();
+			System.out.println("Object added");
 		}
 		catch(Throwable t) {
 			tx.rollback();
+			t.printStackTrace();
 		}
 	}
 	

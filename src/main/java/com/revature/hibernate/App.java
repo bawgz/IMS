@@ -20,13 +20,6 @@ public class App {
 		
 		DataLayer dataLayer = new DataLayer();
 		//dataLayer.insert(whatever);
-		
-		
-	
-		
-		
-		
-		
 
 	}
 

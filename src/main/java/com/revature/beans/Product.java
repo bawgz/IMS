@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="ims_product")
@@ -25,22 +28,40 @@ public class Product {
 	@SequenceGenerator(name="productGen",sequenceName="IMS_PRODUCT_SEQ")
 	@GeneratedValue(generator="productGen", strategy=GenerationType.AUTO)
 	private int productUpc;
+	@NotNull
+	@Size(min=1, message="Name is required")
 	@Column(name="product_name", nullable = false)
 	private String productName;
+	@NotNull
+	@Size(min=1, message="Description is required")
 	@Column(name="product_description", nullable = false)
 	private String productDescription;
+	@NotNull
+	@Size(min=1, max= 3, message="Short name is required")
 	@Column(name="short_name", nullable = false)
 	private String shortName;
+	@NotNull(message="Invalid cost")
+	@Min(value=0)
 	@Column(name="unit_cost", nullable = false)
 	private double unitCost;
+	@NotNull
+	@Size(min=1, message="Pack size is required")
 	@Column(name="pack_size", nullable = false)
 	private String packSize;
+	@NotNull(message="Invalid quanitity")
+	@Min(value=0)
 	@Column(name="reorder_quantity", nullable = false)
 	private int reorderQuantity;
+	@NotNull(message="Invalid threshold")
+	@Min(value=0)
 	@Column(name="reorder_threshold", nullable = false)
 	private int reorderThreshold;
+	@NotNull(message="Invalid quanitity")
+	@Min(value=0)
 	@Column(name="quantity_on_hand", nullable = false)
 	private int quantityOnHand;
+	@NotNull(message="Invalid price")
+	@Min(value=0)
 	@Column(name="retail_price", nullable = false)
 	private double retailPrice;
 	@Column(name="product_weight")
@@ -53,7 +74,10 @@ public class Product {
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
-	Set<ProductCategory> productCategories;
+	private Set<ProductCategory> productCategories;
+	
+	@NotNull(message="Must select a category")
+	transient private String[] categoryNames;
 	
 	public Product() {
 		super();
@@ -216,5 +240,12 @@ public class Product {
 	public void setProductCategories(Set<ProductCategory> productCategories) {
 		this.productCategories = productCategories;
 	}
-	
+
+	public String[] getCategoryNames() {
+		return categoryNames;
+	}
+
+	public void setCategoryNames(String[] categoryNames) {
+		this.categoryNames = categoryNames;
+	}
 }
