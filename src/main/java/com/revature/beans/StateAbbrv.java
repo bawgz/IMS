@@ -3,6 +3,7 @@ package com.revature.beans;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,39 +21,39 @@ public class StateAbbrv {
 	@SequenceGenerator(name="stateAbbrvGen",sequenceName="IMS_SA_SEQ")
 	@GeneratedValue(generator="stateAbbrvGen", strategy=GenerationType.AUTO)
 	@Column(name="abbrv_id", nullable = false)
-	private int abbrevId;
+	private int abbrvId;
 	@Column(name="state_name", nullable = false)
 	private String stateName;
 	@Column(name="state_abbrv", nullable = false)
-	private String stateAbbrev;
+	private String stateAbbrv;
 	
 	//mappings
-	@OneToMany(mappedBy="stateAbbrv")
-	private Set<Address> addresses;
+	@OneToMany(mappedBy="stateAbbrv", cascade=CascadeType.ALL)
+	transient private Set<Address> addresses;
 	
 	public StateAbbrv() {
 		super();
 	}
 
-	public StateAbbrv(String stateName, String stateAbbrev) {
+	public StateAbbrv(String stateName, String stateAbbrv) {
 		super();
 		this.stateName = stateName;
-		this.stateAbbrev = stateAbbrev;
+		this.stateAbbrv = stateAbbrv;
 	}
 	
-	public StateAbbrv(int abbrevId, String stateName, String stateAbbrev) {
+	public StateAbbrv(int abbrvId, String stateName, String stateAbbrv) {
 		super();
-		this.abbrevId = abbrevId;
+		this.abbrvId = abbrvId;
 		this.stateName = stateName;
-		this.stateAbbrev = stateAbbrev;
+		this.stateAbbrv = stateAbbrv;
 	}
 
-	public int getAbbrevId() {
-		return abbrevId;
+	public int getAbbrvId() {
+		return abbrvId;
 	}
 
-	public void setAbbrevId(int abbrevId) {
-		this.abbrevId = abbrevId;
+	public void setAbbrvId(int abbrvId) {
+		this.abbrvId = abbrvId;
 	}
 
 	public String getStateName() {
@@ -63,12 +64,12 @@ public class StateAbbrv {
 		this.stateName = stateName;
 	}
 
-	public String getStateAbbrev() {
-		return stateAbbrev;
+	public String getStateAbbrv() {
+		return stateAbbrv;
 	}
 
-	public void setStateAbbrev(String stateAbbrev) {
-		this.stateAbbrev = stateAbbrev;
+	public void setStateAbbrv(String stateAbbrv) {
+		this.stateAbbrv = stateAbbrv;
 	}
 
 	public Set<Address> getAddresses() {

@@ -27,6 +27,7 @@ public class Address {
 	
 	public Address() {
 		super();
+		this.stateAbbrv = new StateAbbrv();
 	}
 	
 	public Address(String streetAddress1, String streetAddress2, String addressCity, StateAbbrv stateAbbrv, String addressZip) {

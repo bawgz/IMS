@@ -23,8 +23,9 @@ public class ClientType {
 	private int clientTypeId;
 	@Column(name="client_type", nullable = false)
 	private String clientType;
+	
 	@OneToMany(mappedBy="clientType")
-	private Set<Client> clients;
+	transient private Set<Client> clients;
 	
 	public ClientType() {
 		super();
