@@ -20,7 +20,10 @@ public class App {
 		
 		DataLayer dataLayer = new DataLayer();
 		//dataLayer.insert(whatever);
-
+		ClientType clientType1 = new ClientType("Supplier");
+		ClientType clientType2 = new ClientType("Retailer");
+		dataLayer.insert(clientType1);
+		dataLayer.insert(clientType2);
 	}
 
 }
