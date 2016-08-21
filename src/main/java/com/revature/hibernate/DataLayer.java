@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.beans.Product;
 import com.revature.beans.ProductCategory;
 
 //data service
@@ -41,6 +42,10 @@ public class DataLayer {
 	
 	public List<ProductCategory> getProductCategories() {
 		return dao.getProductCategories();
+	}
+
+	public List<Product> getProducts() {
+		return dao.getProducts();
 	}
 	
 }

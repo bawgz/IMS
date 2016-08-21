@@ -14,4 +14,8 @@ public class BusinessDelegate {
 	public void insert(Object obj) {
 		new DataLayer().insert(obj);
 	}
+
+	public List<Product> getProducts() {
+		return new DataLayer().getProducts();
+	}
 }

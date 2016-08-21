@@ -37,7 +37,7 @@ public class Product {
 	@Column(name="product_description", nullable = false)
 	private String productDescription;
 	@NotNull
-	@Size(min=1, max= 3, message="Short name is required")
+	@Size(min=1, max= 5, message="Short name is required")
 	@Column(name="short_name", nullable = false)
 	private String shortName;
 	@NotNull(message="Invalid cost")

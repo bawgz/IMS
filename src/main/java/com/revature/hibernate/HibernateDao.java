@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import com.revature.beans.Product;
 import com.revature.beans.ProductCategory;
 
 public class HibernateDao {
@@ -21,6 +22,11 @@ public class HibernateDao {
 	
 	public List<ProductCategory> getProductCategories() {
 		Query query = session.createQuery("from ProductCategory");
+		return query.list();
+	}
+
+	public List<Product> getProducts() {
+		Query query = session.createQuery("from Product");
 		return query.list();
 	}
 }
