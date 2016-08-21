@@ -112,7 +112,7 @@
   </dependency>
   </dependencies>
   <build>
-    <finalName>MVC</finalName>
+    <finalName>IMS</finalName>
       <plugins>
 	   <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>

@@ -5,7 +5,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.beans.Client;
 import com.revature.beans.ClientType;
+import com.revature.beans.Product;
 import com.revature.beans.ProductCategory;
 import com.revature.beans.StateAbbrv;
 
@@ -44,13 +46,21 @@ public class DataLayer {
 	public List<ProductCategory> getProductCategories() {
 		return dao.getProductCategories();
 	}
+
+	public List<Product> getProducts() {
+		return dao.getProducts();
+	}
+
+	public List<ClientType> getClientTypes() {
+		return dao.getClientTypes();
+	}
+
+	public List<Client> getClientById(int i) {
+		return dao.getClientById(i);
+	}
 	
 	public List<StateAbbrv> getStateAbbrvs() {
 		return dao.getStateAbbrvs();
-	}
-	
-	public List<ClientType> getClientTypes() {
-		return dao.getClientTypes();
 	}
 	
 }

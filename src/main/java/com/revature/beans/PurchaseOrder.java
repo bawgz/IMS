@@ -33,6 +33,8 @@ public class PurchaseOrder {
 	
 	public PurchaseOrder() {
 		super();
+		client = new Client();
+		poLines = new HashSet<PoLine>();
 	}
 
 	public PurchaseOrder(double subtotal, Date purchaseDate, double taxAmount, double poTotal, Client client) {
