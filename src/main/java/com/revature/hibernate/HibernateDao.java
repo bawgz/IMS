@@ -50,4 +50,8 @@ public class HibernateDao {
 		return criteria;
 		
 	}
+
+	public void update(Object obj) {
+		session.update(obj);
+	}
 }

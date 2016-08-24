@@ -62,5 +62,18 @@ public class DataLayer {
 	public List<StateAbbrv> getStateAbbrvs() {
 		return dao.getStateAbbrvs();
 	}
+
+	public void update(Object obj) {
+		Transaction tx = session.beginTransaction();
+		try {
+			dao.update(obj);	//can call multiple daos or dao methods
+			tx.commit();
+			System.out.println("Object updated");
+		}
+		catch(Throwable t) {
+			tx.rollback();
+			t.printStackTrace();
+		}
+	}
 	
 }
