@@ -54,5 +54,10 @@ public class ClientType {
 	public void setClients(Set<Client> clients) {
 		this.clients = clients;
 	}
+
+	@Override
+	public String toString() {
+		return clientType;
+	}
 	
 }

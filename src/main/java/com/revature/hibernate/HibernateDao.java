@@ -54,4 +54,17 @@ public class HibernateDao {
 	public void update(Object obj) {
 		session.update(obj);
 	}
+
+	public List<Client> getClients() {
+		Query query = session.createQuery("from Client");
+		return query.list();
+	}
+
+	public Product getProductByUpc(int upc) {
+		return (Product) session.get(Product.class, new Integer(upc));
+	}
+
+	public void delete(Object obj) {
+		session.delete(obj);
+	}
 }

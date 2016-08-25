@@ -86,6 +86,11 @@ public class Address {
 	public void setAddressZip(String addressZip) {
 		this.addressZip = addressZip;
 	}
+
+	@Override
+	public String toString() {
+		return addressCity + ", " + stateAbbrv;
+	}
 	
 	
 }

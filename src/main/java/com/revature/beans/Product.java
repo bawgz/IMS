@@ -52,10 +52,6 @@ public class Product {
 	@Min(value=0)
 	@Column(name="reorder_quantity", nullable = false)
 	private int reorderQuantity;
-	@NotNull(message="Invalid threshold")
-	@Min(value=0)
-	@Column(name="reorder_threshold", nullable = false)
-	private int reorderThreshold;
 	@NotNull(message="Invalid quanitity")
 	@Min(value=0)
 	@Column(name="quantity_on_hand", nullable = false)
@@ -82,10 +78,26 @@ public class Product {
 	public Product() {
 		super();
 	}
+	
+	//no id, set, or image
+	public Product(String productName, String productDescription, String shortName, double unitCost,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
+			double productWeight) {
+		super();
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.shortName = shortName;
+		this.unitCost = unitCost;
+		this.packSize = packSize;
+		this.reorderQuantity = reorderQuantity;
+		this.quantityOnHand = quantityOnHand;
+		this.retailPrice = retailPrice;
+		this.productWeight = productWeight;
+	}
 
 	//no id, weight, or image
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -94,7 +106,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productCategories = productCategories;
@@ -102,7 +113,7 @@ public class Product {
 
 	//no id or image
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			double productWeight, Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -111,7 +122,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
@@ -120,7 +130,7 @@ public class Product {
 
 	//no id
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			double productWeight, Blob productImage, Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -129,7 +139,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
@@ -191,14 +200,6 @@ public class Product {
 
 	public void setReorderQuantity(int reorderQuantity) {
 		this.reorderQuantity = reorderQuantity;
-	}
-
-	public int getReorderThreshold() {
-		return reorderThreshold;
-	}
-
-	public void setReorderThreshold(int reorderThreshold) {
-		this.reorderThreshold = reorderThreshold;
 	}
 
 	public int getQuantityOnHand() {

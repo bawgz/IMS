@@ -75,5 +75,28 @@ public class DataLayer {
 			t.printStackTrace();
 		}
 	}
+
+	public List<Client> getClients() {
+		return dao.getClients();
+	}
+
+	public Product getProductByUpc(int upc) {
+		return dao.getProductByUpc(upc);
+	}
+
+	public boolean deleteProductByUpc(int upc) {
+		Product p = dao.getProductByUpc(upc);
+		Transaction tx = session.beginTransaction();
+		try {
+			dao.delete(p);	//can call multiple daos or dao methods
+			tx.commit();
+			return true;
+		}
+		catch(Throwable t) {
+			tx.rollback();
+			t.printStackTrace();
+			return false;
+		}
+	}
 	
 }

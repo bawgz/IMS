@@ -37,4 +37,17 @@ public class BusinessDelegate {
 	public void update(Object obj) {
 		new DataLayer().update(obj);
 	}
+
+	public List<Client> getClients() {
+		return new DataLayer().getClients();
+	}
+
+	public Product getProductByUpc(int upc) {
+		return new DataLayer().getProductByUpc(upc);
+		
+	}
+
+	public boolean deleteProductByUpc(int upc) {
+		return new DataLayer().deleteProductByUpc(upc);
+	}
 }
