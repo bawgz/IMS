@@ -27,7 +27,7 @@
 			update
 		</property>
 		<property name="show_sql">	<!-- writes sql statements to console -->
-			true
+			false
 		</property>
 		<!-- optional properties -->
 		<mapping class="com.revature.beans.StateAbbrv"/>	<!-- annotated bean -->

@@ -74,7 +74,7 @@ public class Product {
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
-	private Set<ProductCategory> productCategories;
+	transient private Set<ProductCategory> productCategories;
 	
 	@NotNull(message="Must select a category")
 	transient private String[] categoryNames;

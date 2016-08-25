@@ -54,13 +54,13 @@ public class DataLayer {
 	public List<ClientType> getClientTypes() {
 		return dao.getClientTypes();
 	}
-
-	public List<Client> getClientById(int i) {
-		return dao.getClientById(i);
-	}
 	
 	public List<StateAbbrv> getStateAbbrvs() {
 		return dao.getStateAbbrvs();
+	}
+	
+	public List<Client> getClientById(int i) {
+		return dao.getClientById(i);
 	}
 	
 }

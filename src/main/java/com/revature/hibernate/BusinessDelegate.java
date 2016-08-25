@@ -33,4 +33,5 @@ public class BusinessDelegate {
 	public List<Client> getClientById(int i) {
 		return new DataLayer().getClientById(i);
 	}
+
 }
