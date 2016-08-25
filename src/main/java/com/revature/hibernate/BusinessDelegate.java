@@ -37,7 +37,6 @@ public class BusinessDelegate {
 	public void update(Object obj) {
 		new DataLayer().update(obj);
 	}
-
 	public List<Client> getClients() {
 		return new DataLayer().getClients();
 	}

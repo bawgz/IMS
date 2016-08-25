@@ -46,8 +46,9 @@ public class HibernateDao {
 	}
 
 	public List<Client> getClientById(int i) {
-		List<Client> criteria = session.createCriteria(Client.class).add(Restrictions.idEq(Integer.valueOf(i))).list();
-		return criteria;
+		Criteria criteria = session.createCriteria(Client.class);
+		criteria.add(Restrictions.eq("clientType.clientTypeId", i));
+		return criteria.list();
 		
 	}
 
