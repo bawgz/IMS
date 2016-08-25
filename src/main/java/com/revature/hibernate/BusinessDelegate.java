@@ -34,4 +34,8 @@ public class BusinessDelegate {
 		return new DataLayer().getClientById(i);
 	}
 
+	public void update(Object obj) {
+		new DataLayer().update(obj);
+	}
+
 }

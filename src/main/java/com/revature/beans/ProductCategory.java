@@ -39,6 +39,11 @@ public class ProductCategory {
 		this.categoryDescription = categoryDescription;
 	}
 	
+	public ProductCategory(String description) {
+		categoryId = 1;
+		categoryDescription = description;
+	}
+
 	public int getCategoryId() {
 		return categoryId;
 	}
