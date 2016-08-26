@@ -27,7 +27,7 @@ public class ProductCategory {
 	
 	//mappings
 	@ManyToMany(mappedBy="productCategories")
-	transient Set<Product> products;
+	transient private Set<Product> products;
 	
 	public ProductCategory() {
 		super();

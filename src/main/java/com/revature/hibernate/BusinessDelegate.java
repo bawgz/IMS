@@ -37,9 +37,29 @@ public class BusinessDelegate {
 	public void update(Object obj) {
 		new DataLayer().update(obj);
 	}
+	
+	public List<Client> getClients() {
+		return new DataLayer().getClients();
+	}
 
 	public Product getProductById(int productId) {
 		return new DataLayer().getProductById(productId);
 	}
 
+	public Product getProductByUpc(int upc) {
+		return new DataLayer().getProductByUpc(upc);
+		
+	}
+
+	public boolean deleteProductByUpc(int upc) {
+		return new DataLayer().deleteProductByUpc(upc);
+	}
+
+	public Client getClientObjectById(int clientId) {
+		return new DataLayer().getClientObjectById(clientId);
+	}
+
+	public void deleteClientById(int id) {
+		new DataLayer().deleteClientById(id);
+	}
 }

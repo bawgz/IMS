@@ -79,4 +79,11 @@ public class StateAbbrv {
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
+
+	@Override
+	public String toString() {
+		return stateAbbrv;
+	}
+	
+	
 }

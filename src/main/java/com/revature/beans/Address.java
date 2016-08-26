@@ -86,6 +86,34 @@ public class Address {
 	public void setAddressZip(String addressZip) {
 		this.addressZip = addressZip;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return addressCity + ", " + stateAbbrv;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((addressCity == null) ? 0 : addressCity.hashCode());
+		result = prime * result + ((addressZip == null) ? 0 : addressZip.hashCode());
+		result = prime * result + imsAddressId;
+		result = prime * result + ((stateAbbrv == null) ? 0 : stateAbbrv.hashCode());
+		result = prime * result + ((streetAddress1 == null) ? 0 : streetAddress1.hashCode());
+		result = prime * result + ((streetAddress2 == null) ? 0 : streetAddress2.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Address)){
+			return false;
+		}
+		Address a = (Address) obj;
+		return a.imsAddressId == imsAddressId && a.streetAddress1.equals(streetAddress1) && 
+				a.streetAddress2 != null && a.streetAddress2.equals(streetAddress2) && 
+				a.addressCity.equals(addressCity) && a.addressZip.equals(addressZip) && 
+				a.stateAbbrv.getAbbrvId() == stateAbbrv.getAbbrvId();
+	}
 }

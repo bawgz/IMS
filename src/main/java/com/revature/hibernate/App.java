@@ -37,9 +37,9 @@ public class App {
 		
 		ProductCategory p1 = new ProductCategory("Automobile");
 		ProductCategory p2 = new ProductCategory("Air Ship");
-		ProductCategory p3 = new ProductCategory("Sporty");
+		ProductCategory p3 = new ProductCategory("Sports");
 		ProductCategory p4 = new ProductCategory("Utility");
-		ProductCategory p5 = new ProductCategory("Heavy Duty");
+		ProductCategory p5 = new ProductCategory("Luxurious");
 		ProductCategory p6 = new ProductCategory("Armored");
 		dataLayer.insert(p1);
 		dataLayer.insert(p2);
@@ -53,6 +53,11 @@ public class App {
 		dataLayer.insert(clientType1);
 		dataLayer.insert(clientType2);
 		
+//		Set<ProductCategory> cats = new HashSet<ProductCategory>();
+//		cats.add(p1);
+//		cats.add(p3);
+//		Product product = new Product("IDK","Hello","IDK",10,"OK",10,10,10,10,10,cats);
+//		dataLayer.insert(product);
 	}
 
 }

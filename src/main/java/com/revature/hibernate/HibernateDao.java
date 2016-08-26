@@ -56,8 +56,26 @@ public class HibernateDao {
 		session.update(obj);
 	}
 
+
 	public Product getProductById(int productId) {
 		Criteria criteria = session.createCriteria(Product.class).add(Restrictions.eq("productUpc", productId));
 		return (Product) criteria.uniqueResult();
+}
+	public List<Client> getClients() {
+		Query query = session.createQuery("from Client");
+		return query.list();
+	}
+
+	public Product getProductByUpc(int upc) {
+		return (Product) session.get(Product.class, new Integer(upc));
+	}
+
+	public void delete(Object obj) {
+		session.delete(obj);
+	}
+
+	public Client getClientObjectById(int clientId) {
+		return (Client) session.get(Client.class, new Integer(clientId));
+
 	}
 }

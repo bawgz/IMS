@@ -1,10 +1,8 @@
 package com.revature.beans;
 
 import java.sql.Blob;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.util.StringUtils;
 
 @Entity
 @Table(name="ims_product")
@@ -52,10 +53,6 @@ public class Product {
 	@Min(value=0)
 	@Column(name="reorder_quantity", nullable = false)
 	private int reorderQuantity;
-	@NotNull(message="Invalid threshold")
-	@Min(value=0)
-	@Column(name="reorder_threshold", nullable = false)
-	private int reorderThreshold;
 	@NotNull(message="Invalid quanitity")
 	@Min(value=0)
 	@Column(name="quantity_on_hand", nullable = false)
@@ -74,18 +71,42 @@ public class Product {
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
-	transient private Set<ProductCategory> productCategories;
+	private Set<ProductCategory> productCategories;
+	
+	@OneToMany(mappedBy="product")
+	private Set<PoLine> poLines;
 	
 	@NotNull(message="Must select a category")
 	transient private String[] categoryNames;
 	
+	transient private String categoriesString;
+	transient private int profit;
+	transient private static int companyProfit = 0;
+	transient private int profitPercent;
+	
 	public Product() {
 		super();
+	}
+	
+	//no id, set, or image
+	public Product(String productName, String productDescription, String shortName, double unitCost,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
+			double productWeight) {
+		super();
+		this.productName = productName;
+		this.productDescription = productDescription;
+		this.shortName = shortName;
+		this.unitCost = unitCost;
+		this.packSize = packSize;
+		this.reorderQuantity = reorderQuantity;
+		this.quantityOnHand = quantityOnHand;
+		this.retailPrice = retailPrice;
+		this.productWeight = productWeight;
 	}
 
 	//no id, weight, or image
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -94,7 +115,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productCategories = productCategories;
@@ -102,7 +122,7 @@ public class Product {
 
 	//no id or image
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			double productWeight, Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -111,7 +131,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
@@ -120,7 +139,7 @@ public class Product {
 
 	//no id
 	public Product(String productName, String productDescription, String shortName, double unitCost,
-			String packSize, int reorderQuantity, int reorderThreshold, int quantityOnHand, double retailPrice,
+			String packSize, int reorderQuantity, int quantityOnHand, double retailPrice,
 			double productWeight, Blob productImage, Set<ProductCategory> productCategories) {
 		super();
 		this.productName = productName;
@@ -129,7 +148,6 @@ public class Product {
 		this.unitCost = unitCost;
 		this.packSize = packSize;
 		this.reorderQuantity = reorderQuantity;
-		this.reorderThreshold = reorderThreshold;
 		this.quantityOnHand = quantityOnHand;
 		this.retailPrice = retailPrice;
 		this.productWeight = productWeight;
@@ -193,14 +211,6 @@ public class Product {
 		this.reorderQuantity = reorderQuantity;
 	}
 
-	public int getReorderThreshold() {
-		return reorderThreshold;
-	}
-
-	public void setReorderThreshold(int reorderThreshold) {
-		this.reorderThreshold = reorderThreshold;
-	}
-
 	public int getQuantityOnHand() {
 		return quantityOnHand;
 	}
@@ -247,5 +257,29 @@ public class Product {
 
 	public void setCategoryNames(String[] categoryNames) {
 		this.categoryNames = categoryNames;
+	}
+	
+	public String getCategoriesString(){
+		if(productCategories.isEmpty()) {
+			return "";
+		}
+		categoriesString = StringUtils.collectionToCommaDelimitedString(productCategories);
+		return categoriesString;
+	}
+	
+	public int getProfit(){
+		return profit;
+	}
+	
+	public void incrementProfit(int revenue, int cost) {
+		profit = profit + revenue - cost;
+	}
+	
+	public static int getCompanyProfit(){
+		return companyProfit;
+	}
+	
+	public static void incrementCompanyProfit(int revenue, int cost){
+		companyProfit = companyProfit + revenue + cost;
 	}
 }
