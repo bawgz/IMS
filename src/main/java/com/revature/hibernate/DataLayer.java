@@ -98,5 +98,25 @@ public class DataLayer {
 	public List<Client> getClientById(int i) {
 		return dao.getClientById(i);
 	}
+
+	public Client getClientObjectById(int clientId) {
+		return dao.getClientObjectById(clientId);
+	}
+
+	public void deleteClientById(int id) {
+		Client c = dao.getClientObjectById(id);
+		Transaction tx = session.beginTransaction();
+		try{
+			dao.delete(c);
+			dao.delete(c.getAddress());
+			tx.commit();
+			System.out.println("Deleted");
+		}
+		catch(Throwable t) {
+			tx.rollback();
+			t.printStackTrace();
+			System.out.println("You suck");
+		}
+	}
 	
 }

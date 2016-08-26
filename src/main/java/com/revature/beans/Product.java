@@ -1,10 +1,8 @@
 package com.revature.beans;
 
 import java.sql.Blob;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,11 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.springframework.util.StringUtils;
 
 @Entity
 @Table(name="ims_product")
@@ -70,10 +71,18 @@ public class Product {
 	@JoinTable(name="product_categories",
 		joinColumns=@JoinColumn(name="product_upc", nullable = false),
 		inverseJoinColumns=@JoinColumn(name="category_id", nullable = false))
-	transient private Set<ProductCategory> productCategories;
+	private Set<ProductCategory> productCategories;
+	
+	@OneToMany(mappedBy="product")
+	private Set<PoLine> poLines;
 	
 	@NotNull(message="Must select a category")
 	transient private String[] categoryNames;
+	
+	transient private String categoriesString;
+	transient private int profit;
+	transient private static int companyProfit = 0;
+	transient private int profitPercent;
 	
 	public Product() {
 		super();
@@ -248,5 +257,29 @@ public class Product {
 
 	public void setCategoryNames(String[] categoryNames) {
 		this.categoryNames = categoryNames;
+	}
+	
+	public String getCategoriesString(){
+		if(productCategories.isEmpty()) {
+			return "";
+		}
+		categoriesString = StringUtils.collectionToCommaDelimitedString(productCategories);
+		return categoriesString;
+	}
+	
+	public int getProfit(){
+		return profit;
+	}
+	
+	public void incrementProfit(int revenue, int cost) {
+		profit = profit + revenue - cost;
+	}
+	
+	public static int getCompanyProfit(){
+		return companyProfit;
+	}
+	
+	public static void incrementCompanyProfit(int revenue, int cost){
+		companyProfit = companyProfit + revenue + cost;
 	}
 }

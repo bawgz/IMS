@@ -40,15 +40,13 @@ public class App {
 		ProductCategory p3 = new ProductCategory("Sports");
 		ProductCategory p4 = new ProductCategory("Utility");
 		ProductCategory p5 = new ProductCategory("Luxurious");
-		ProductCategory p6 = new ProductCategory("Heavy Duty");
-		ProductCategory p7 = new ProductCategory("Armored");
+		ProductCategory p6 = new ProductCategory("Armored");
 		dataLayer.insert(p1);
 		dataLayer.insert(p2);
 		dataLayer.insert(p3);
 		dataLayer.insert(p4);
 		dataLayer.insert(p5);
 		dataLayer.insert(p6);
-		dataLayer.insert(p7);
 		
 		ClientType clientType1 = new ClientType("Supplier");
 		ClientType clientType2 = new ClientType("Retailer");

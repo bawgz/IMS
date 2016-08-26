@@ -68,4 +68,8 @@ public class HibernateDao {
 	public void delete(Object obj) {
 		session.delete(obj);
 	}
+
+	public Client getClientObjectById(int clientId) {
+		return (Client) session.get(Client.class, new Integer(clientId));
+	}
 }
