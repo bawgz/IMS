@@ -38,4 +38,8 @@ public class BusinessDelegate {
 		new DataLayer().update(obj);
 	}
 
+	public Product getProductById(int productId) {
+		return new DataLayer().getProductById(productId);
+	}
+
 }

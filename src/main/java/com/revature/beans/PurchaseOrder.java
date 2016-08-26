@@ -29,7 +29,7 @@ public class PurchaseOrder {
 	@JoinColumn(name="client_id", nullable = false)
 	private Client client;
 	@OneToMany(mappedBy="poLineId.orderNumber")
-	private Set<PoLine> poLines;
+	transient private Set<PoLine> poLines;
 	
 	public PurchaseOrder() {
 		super();

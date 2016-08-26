@@ -75,5 +75,9 @@ public class DataLayer {
 	public List<Client> getClientById(int i) {
 		return dao.getClientById(i);
 	}
+
+	public Product getProductById(int productId) {
+		return dao.getProductById(productId);
+	}
 	
 }

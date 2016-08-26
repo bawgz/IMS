@@ -55,4 +55,9 @@ public class HibernateDao {
 	public void update(Object obj) {
 		session.update(obj);
 	}
+
+	public Product getProductById(int productId) {
+		Criteria criteria = session.createCriteria(Product.class).add(Restrictions.eq("productUpc", productId));
+		return (Product) criteria.uniqueResult();
+	}
 }
